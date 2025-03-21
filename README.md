@@ -109,7 +109,7 @@ We implemented a "Test 100" feature that simulates 100 random transactions to va
 - **Database**: PostgreSQL
 - **Frontend**: HTML/CSS, JavaScript, EJS templates
 - **Authentication**: Express-session
-- **Additional Libraries**: bcrypt, cors, body-parser
+- **Additional Libraries**: bcrypt, cors, body-parser, Python
 - **Transaction Management**: ACID-compliant logic with PostgreSQL
 
 ## Contributors
