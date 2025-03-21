@@ -1,6 +1,3 @@
-// Let me display the current format of the artifact to verify it's in proper Markdown format
-
-const artifact = `# Fast Food Chain Website - Database Management System
 **Course Project - DBMS Class**  
 **Group 24: Amrinder Singh, Henri**
 
