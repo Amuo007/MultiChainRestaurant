@@ -119,6 +119,3 @@ We implemented a "Test 100" feature that simulates 100 random transactions to va
 ---
 
 *This project was developed as part of our Database Management Systems course.*`;
-
-console.log("The content is in proper Markdown format. Here's a preview of how it renders:");
-console.log(artifact);
