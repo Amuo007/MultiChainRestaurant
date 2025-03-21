@@ -106,7 +106,7 @@ We implemented a "Test 100" feature that simulates 100 random transactions to va
 
 
 
-
+## 
 <div align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="30" alt="javascript logo" />
   <img width="12" />
@@ -128,6 +128,7 @@ We implemented a "Test 100" feature that simulates 100 random transactions to va
   <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" height="30" alt="vscode logo" />
 </div>
+## 
 ## Technology Stack
 - **Backend**: Node.js, Express.js
 - **Database**: PostgreSQL
