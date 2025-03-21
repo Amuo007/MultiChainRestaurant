@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
+   
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- Add TailwindCSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+
+    <!-- Additional scripts for icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+     <!-- Add this line for Tailwind -->
+     <script src="https://cdn.tailwindcss.com"></script>
+     <!-- Add jQuery (sometimes helps with modals) -->
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <!-- Add Lucide icons -->
+     <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="p-6 max-w-7xl mx-auto space-y-6">
+        <!-- Header -->
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-bold">Restaurant Dashboard</h1>
+            <div class="flex items-center space-x-4">
+                <form action="/auth/logout" method="POST">
+                    <button type="submit" 
+                            class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
+                        Log Out
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="border-b border-gray-200">
+            <nav class="-mb-px flex space-x-8">
+                <% const tabs = [
+                    { id: 'admin/overview', label: 'Overview' },
+                    { id: 'admin/orders', label: 'Orders' },
+                    { id: 'admin/menu', label: 'Menu' },
+                    { id: 'admin/transactions', label: 'Transactions' },
+                    { id: 'admin/branches', label: 'Branches' },
+                    { id: 'admin/employees', label: 'Employees' },
+                    { id: 'admin/customers', label: 'Customers' },
+                    { id: 'admin/cashLogs', label: 'CashLogs' },
+
+                    
+                ] %>
+                
+                <% tabs.forEach(tab => { %>
+                    <a 
+                        href="/<%= tab.id %>"
+                        class="py-4 px-1 border-b-2 font-medium text-sm
+                        <%= currentPage === tab.id 
+                            ? 'border-indigo-500 text-indigo-600'
+                            : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                        %>"
+                    >
+                        <%= tab.label %>
+                    </a>
+                <% }) %>
+            </nav>
+        </div>
+
+        <!-- Content -->
+        <%- body %>
+    </div>
+
+    <%- include('../partials/scripts') %>
+</body>
+</html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Predefined base colors for a professional look
+        const baseColors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#A28CFF', '#FF4560', '#775DD0'];
+
+        // Function to generate lighter/darker shades of base colors
+        const generateShades = (count) => {
+            const colors = [];
+            for (let i = 0; i < count; i++) {
+                const baseColor = baseColors[i % baseColors.length]; // Cycle through base colors
+                const shade = lightenDarkenColor(baseColor, (i % 2 === 0 ? 15 : -15) * Math.floor(i / baseColors.length + 1));
+                colors.push(shade);
+            }
+            return colors;
+        };
+
+        // Helper function to adjust color brightness
+        const lightenDarkenColor = (color, amt) => {
+            let usePound = false;
+            if (color[0] === "#") {
+                color = color.slice(1);
+                usePound = true;
+            }
+
+            const num = parseInt(color, 16);
+            let r = (num >> 16) + amt;
+            let g = ((num >> 8) & 0x00FF) + amt;
+            let b = (num & 0x0000FF) + amt;
+
+            r = Math.min(255, Math.max(0, r));
+            g = Math.min(255, Math.max(0, g));
+            b = Math.min(255, Math.max(0, b));
+
+            return (usePound ? "#" : "") + (r << 16 | g << 8 | b).toString(16).padStart(6, '0');
+        };
+
+        // Fetch data from the API
+        fetch('/admin/api/chart-data')
+            .then(response => response.json())
+            .then(data => {
+                // Weekly Performance Data
+                const weeklyData = {
+                    labels: data.weeklyLabels, // Labels for weekly dates
+                    datasets: [{
+                        label: 'Orders',
+                        data: data.weeklyOrders, // Orders data
+                        borderColor: '#8884d8',
+                        tension: 0.1
+                    }, {
+                        label: 'Revenue',
+                        data: data.weeklyRevenue, // Revenue data
+                        borderColor: '#82ca9d',
+                        tension: 0.1
+                    }]
+                };
+
+                // Revenue Distribution Data
+                const dynamicColors = generateShades(data.revenueLabels.length);
+                const revenueData = {
+                    labels: data.revenueLabels, // Categories for revenue
+                    datasets: [{
+                        data: data.revenueValues, // Revenue values
+                        backgroundColor: dynamicColors
+                    }]
+                };
+
+                // Initialize Weekly Chart
+                new Chart('weeklyChart', {
+                    type: 'line',
+                    data: weeklyData,
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+
+                // Initialize Revenue Distribution Chart
+                new Chart('revenueChart', {
+                    type: 'pie',
+                    data: revenueData,
+                    options: {
+                        responsive: true
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching chart data:', error);
+            });
+    });
+</script>

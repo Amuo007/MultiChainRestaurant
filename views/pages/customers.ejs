@@ -1,0 +1,51 @@
+<div class="bg-white rounded-lg shadow p-6">
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-semibold">Customers</h2>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Account Number</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Balance</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                <% if (result.length > 0) { %>
+                    <% result.forEach(customer => { %>
+                        <tr>
+                            <td class="px-6 py-4"><%= customer.customerid %></td>
+                            <td class="px-6 py-4"><%= customer.name %></td>
+                            <td class="px-6 py-4"><%= customer.email %></td>
+                            <td class="px-6 py-4"><%= customer.accountnumber %></td>
+                            <td class="px-6 py-4">$<%= Number(customer.balance).toFixed(2) %></td>
+                            <td class="px-6 py-4">
+                                <div class="flex gap-2">
+                                    <a href="/admin/customers/details/<%= customer.customerid %>" 
+                                        class="px-4 py-2 w-32 text-center bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                                        View Details
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="6" class="px-6 py-4 text-center text-gray-500">
+                            No customers available.
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    lucide.createIcons();
+</script>

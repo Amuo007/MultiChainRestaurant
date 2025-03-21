@@ -1,0 +1,98 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff9e6; /* Light yellow background for a fresh, warm feel */
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 2px solid #f1a200; /* Bold orange border */
+}
+
+h1 {
+    color: #f1a200; /* Vibrant orange for the fast-food feel */
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-family: 'Verdana', sans-serif;
+}
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    border: 2px solid #f1a200; /* Matching border color */
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #d87d1a; /* Slightly darker orange when focused */
+    outline: none;
+}
+
+button {
+    background-color: #f1a200; /* Bright orange button */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #d87d1a; /* Darker orange on hover */
+}
+
+button:active {
+    background-color: #b76c10; /* Even darker orange when clicked */
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    input,
+    button {
+        font-size: 14px;
+    }
+}

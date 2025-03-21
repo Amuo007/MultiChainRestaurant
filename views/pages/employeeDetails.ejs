@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+    <link rel="stylesheet" href="/path-to-your-css-file.css"> <!-- Update with your CSS file -->
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-8 p-6 bg-white shadow rounded">
+        <h1 class="text-2xl font-bold mb-4">Employee Details</h1>
+
+        <p><strong>Full Name:</strong> <%= employee.name %></p>
+        <p><strong>Email:</strong> <%= employee.email %></p>
+        <p><strong>Phone Number:</strong> <%= employee.phonenumber || 'N/A' %></p>
+        <p><strong>Branch Address:</strong> <%= employee.branchaddress || 'N/A' %></p>
+        <p><strong>Role:</strong> <%= employee.role || 'N/A' %></p>
+        <p><strong>Salary:</strong> $<%= employee.salary %></p>
+        <p><strong>Username:</strong> <%= employee.username %></p>
+        <p><strong>Password:</strong> <%= employee.password %></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,224 @@
+/* General styles */
+body {
+    background-color: #FFD8A9;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    width: 1000px;
+    margin: auto;
+    transition: 0.5s;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+header .shopping {
+    position: relative;
+}
+
+header .shopping img {
+    width: 45px;
+}
+
+header .shopping span {
+    background: #FF4B3E;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    padding: 4px 12px;
+    font-weight: bold;
+}
+
+/* Adjusted button styles */
+header .branch-button {
+    background-color: #FFD700;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 20px;
+}
+
+header .branch-button:hover {
+    background-color: #FFC107;
+}
+
+/* Product list styles */
+.list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.list .item {
+    text-align: center;
+    background-color: #FFF3E1;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.list .item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.list .item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.list .item .title {
+    font-weight: bold;
+    color: #D84315;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.list .item .price {
+    color: #444;
+    font-size: 1.1rem;
+    margin: 8px 0;
+}
+
+.list .item button {
+    background-color: #FF4B3E;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.list .item button:hover {
+    background-color: #D84315;
+}
+
+/* Shopping cart styles */
+.card {
+    position: fixed;
+    top: 0;
+    right: -500px;
+    width: 400px;
+    background-color: #333;
+    height: 100vh;
+    transition: right 0.5s ease;
+    overflow-y: auto;
+}
+
+.active .card {
+    right: 0;
+}
+
+.card h1 {
+    color: #FFD700;
+    font-weight: bold;
+    margin: 0;
+    padding: 20px;
+    background: #444;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.card .checkOut {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+}
+
+.card .checkOut div {
+    background-color: #FFD700;
+    color: #333;
+    width: 50%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.card .checkOut div:nth-child(2) {
+    background-color: #FF4B3E;
+    color: #fff;
+}
+
+/* Cart item list styles */
+.listCard {
+    padding: 20px;
+}
+
+.listCard li {
+    display: grid;
+    grid-template-columns: 100px 1fr 50px;
+    align-items: center;
+    gap: 15px;
+    color: #fff;
+    border-bottom: 1px solid #555;
+    padding: 10px 0;
+}
+
+.listCard li img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.listCard li button {
+    background-color: transparent;
+    color: #FFD700;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.listCard li button:hover {
+    color: #FF4B3E;
+}
+
+.listCard .count {
+    color: #FFD700;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.checkOutButton {
+    background-color: #28a745; /* Green color */
+    color: white;              /* Text color */
+    border: none;              /* No border */
+    padding: 10px 20px;        /* Padding */
+    font-size: 16px;           /* Font size */
+    cursor: pointer;           /* Pointer cursor on hover */
+    border-radius: 5px;       /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.checkOutButton:hover {
+    background-color: #218838; /* Darker green on hover */
+}

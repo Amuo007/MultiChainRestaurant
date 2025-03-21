@@ -1,0 +1,86 @@
+<div class="space-y-6">
+    <!-- Stats Cards -->
+    <div class="space-y-6">
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-gray-500 text-sm">Total Revenue</h2>
+                <p class="text-2xl font-bold">$<%= stats.totalRevenue %></p>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-gray-500 text-sm">Total Orders</h2>
+                <p class="text-2xl font-bold"><%= stats.totalOrders %></p>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-gray-500 text-sm">Avg Order Value</h2>
+                <p class="text-2xl font-bold"><%= Number(stats.avgOrderValue  || 0).toFixed(2) %></p>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-gray-500 text-sm">Active Locations</h2>
+                <p class="text-2xl font-bold"><%= stats.activeLocations %></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-xl font-semibold mb-4">Weekly Performance</h2>
+            <canvas id="weeklyChart"></canvas>
+        </div>
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-xl font-semibold mb-4">Revenue Distribution</h2>
+            <canvas id="revenueChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<script>
+    const weeklyData = {
+        labels: ['03/13', '03/14', '03/15', '03/16', '03/17'],
+        datasets: [{
+            label: 'Orders',
+            data: [120, 145, 135, 150, 160],
+            borderColor: '#8884d8',
+            tension: 0.1
+        }, {
+            label: 'Revenue',
+            data: [3400, 4100, 3800, 4300, 4600],
+            borderColor: '#82ca9d',
+            tension: 0.1
+        }]
+    };
+    
+    const revenueData = {
+        labels: ['Pizza', 'Burger', 'Beverage'],
+        datasets: [{
+            data: [28540, 14800, 9250],
+            backgroundColor: ['#0088FE', '#00C49F', '#FFBB28']
+        }]
+    };
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        new Chart('weeklyChart', {
+            type: 'line',
+            data: weeklyData,
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    
+        new Chart('revenueChart', {
+            type: 'pie',
+            data: revenueData,
+            options: {
+                responsive: true
+            }
+        });
+    });
+    </script>
+    
+    

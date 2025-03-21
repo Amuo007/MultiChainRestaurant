@@ -1,0 +1,63 @@
+<div class="bg-white rounded-lg shadow p-6">
+    <h2 class="text-xl font-semibold mb-4">Customer Details</h2>
+
+    <div>
+        <h3 class="text-lg font-semibold">Customer Info</h3>
+        <p><strong>Name:</strong> <%= customer.name %></p>
+        <p><strong>Email:</strong> <%= customer.email %></p>
+        <p><strong>Account Number:</strong> <%= customer.accountnumber %></p>
+        <p><strong>Balance:</strong> $<%= customer.balance %></p>
+    </div>
+
+    <div class="mt-6">
+        <h3 class="text-lg font-semibold">Past Orders</h3>
+        <% if (orders.length > 0) { %>
+            <% orders.forEach(order => { %>
+                <div class="border-t py-2">
+                    <p><strong>Order ID:</strong> <%= order.orderid %></p>
+                    <p><strong>Date:</strong> <%= new Date(order.orderdate).toLocaleDateString() %></p>
+                    <p><strong>Branch:</strong> <%= order.branch %></p>
+                    <p><strong>Total:</strong> $<%= order.total %></p>
+                    <h4 class="text-sm font-semibold">Items:</h4>
+                    <ul>
+                        <% order.items.forEach(item => { %>
+                            <li><%= item.itemname %> x <%= item.quantity %> ($<%= item.price %>)</li>
+                        <% }) %>
+                    </ul>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No orders found.</p>
+        <% } %>
+    </div>
+
+    <div class="mt-6">
+        <h3 class="text-lg font-semibold">Transaction History</h3>
+        <% if (transactions.length > 0) { %>
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Type</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Amount</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Branch</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <% transactions.forEach(transaction => { %>
+                        <tr>
+                            <td class="px-6 py-4"><%= transaction.transactionid %></td>
+                            <td class="px-6 py-4"><%= transaction.transactiontype %></td>
+                            <td class="px-6 py-4">$<%= transaction.amount %></td>
+                            <td class="px-6 py-4"><%= new Date(transaction.transactiondate).toLocaleDateString() %></td>
+                            <td class="px-6 py-4"><%= transaction.branch %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>No transactions found.</p>
+        <% } %>
+    </div>
+</div>

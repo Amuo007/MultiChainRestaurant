@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Order</title>
+        <link rel="stylesheet" href="./css/order.css">
+    </head>
+    <body>
+
+        <div class="container">
+            <header>
+                <h1>Place Your Order</h1>
+                <div class="branch-selection">
+                    <label for="branchSelect">Select Branch:</label>
+                    <select id="branchSelect">
+                        <!-- Branch options will be populated dynamically -->
+                    </select>
+                </div>
+                <div class="shopping">
+                    <img src="./images/shopping-cart.svg" alt="Shopping Cart">
+                    <span class="quantity">0</span>
+                </div>
+            </header>
+
+            <div class="list">
+                <!-- Menu items will be dynamically populated here -->
+            </div>
+        </div>
+
+        <div class="card">
+            <h1>Cart</h1>
+            <ul class="listCard">
+                <!-- List of items in the cart will go here -->
+            </ul>
+            <div class="checkOut">
+                <div class="total">0</div>
+                <button 
+                    class="checkOutButton" 
+                    onclick="proceedToCheckout()">Check Out</button>
+                <div class="closeShopping">Close</div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="./script/order.js"></script>
+    </body>
+</html>

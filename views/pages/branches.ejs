@@ -1,0 +1,137 @@
+<div class="bg-white rounded-lg shadow p-6">
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-semibold">Branches</h2>
+        <button onclick="document.getElementById('branchModal').classList.remove('hidden')" 
+                class="bg-indigo-600 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+            <i data-lucide="plus" class="w-4 h-4"></i>
+            Add Branch
+        </button>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Address</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Phone Number</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Account Number</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Balance</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                    <!-- <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th> -->
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                <% data.forEach(branch => { %>
+                    <tr>
+                        <td class="px-6 py-4"><%= branch.address %></td>
+                        <td class="px-6 py-4"><%= branch.phone %></td>
+                        <td class="px-6 py-4"><%= branch.altPhone %></td>
+                        <td class="px-6 py-4"><%= branch.amount %></td>
+                        <td class="px-6 py-4">
+                            <span class="px-2 py-1 rounded-full text-xs 
+                                <%= branch.status === 'Active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' %>">
+                                <%= branch.status %>
+                            </span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex gap-2">
+                                <form action="/admin/branches/delete/<%= branch.id %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                    <!-- <button type="submit" 
+                                            class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
+                                        Delete
+                                    </button> -->
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Branch Modal -->
+<div id="branchModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white p-8 rounded-lg max-w-md w-full m-4">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-bold">Add New Branch</h2>
+            <button type="button" 
+                    onclick="document.getElementById('branchModal').classList.add('hidden')"
+                    class="text-gray-500 hover:text-gray-700">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <form class="space-y-4" action="/admin/branches/add" method="POST">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Address</label>
+                <textarea name="address" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    placeholder="Full address"></textarea>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+                <input type="tel" name="phonenumber" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    placeholder="123-456-7890">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Account Number</label>
+                <input type="text" name="accountnumber" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    placeholder="10-digit account number">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Initial Balance</label>
+                <div class="relative mt-1 rounded-md shadow-sm">
+                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                        <span class="text-gray-500 sm:text-sm">$</span>
+                    </div>
+                    <input type="number" name="balance" step="0.01" required
+                        class="block w-full pl-7 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        placeholder="0.00">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Status</label>
+                <select name="status" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+            </div>
+
+            <div class="flex justify-end gap-3 pt-4">
+                <button type="button" 
+                        onclick="document.getElementById('branchModal').classList.add('hidden')"
+                        class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+                    Cancel
+                </button>
+                <button type="submit"
+                        class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700">
+                    Add Branch
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+// Initialize Lucide icons
+lucide.createIcons();
+
+// Add click event listener for outside click
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('branchModal');
+    
+    modal.addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.add('hidden');
+        }
+    });
+});
+</script>

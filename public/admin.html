@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="./css/admin.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+
+        <!-- Table sections for each table -->
+        <div class="table-container" id="branch-container">
+            <h2>Branch Table</h2>
+            <table id="branch-table" class="data-table">
+                <thead><tr><th>Branch ID</th><th>Address</th><th>Phone Number</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="table-container" id="customer-container">
+            <h2>Customer Table</h2>
+            <table id="customer-table" class="data-table">
+                <thead><tr><th>Customer ID</th><th>Name</th><th>Email</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="table-container" id="category-container">
+            <h2>Category Table</h2>
+            <table id="category-table" class="data-table">
+                <thead><tr><th>Category ID</th><th>Name</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="table-container" id="menu-items-container">
+            <h2>Menu Items Table</h2>
+            <table id="menu-items-table" class="data-table">
+                <thead><tr><th>Item ID</th><th>Name</th><th>Category ID</th><th>Price</th><th>Description</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="table-container" id="orders-container">
+            <h2>Orders Table</h2>
+            <table id="orders-table" class="data-table">
+                <thead><tr><th>Order ID</th><th>Order Date</th><th>Customer ID</th><th>Branch ID</th><th>Total</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="table-container" id="order-items-container">
+            <h2>Order Items Table</h2>
+            <table id="order-items-table" class="data-table">
+                <thead><tr><th>Order ID</th><th>Item ID</th><th>Quantity</th><th>Price</th><th>Total</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="table-container" id="transactions-container">
+            <h2>Transactions Table</h2>
+            <table id="transactions-table" class="data-table">
+                <thead><tr><th>Transaction ID</th><th>Branch ID</th><th>Transaction Type</th><th>Amount</th><th>Transaction Date</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="table-container" id="restaurant-bank-account-container">
+            <h2>Restaurant Bank Account Table</h2>
+            <table id="restaurant-bank-account-table" class="data-table">
+                <thead><tr><th>Bank Account ID</th><th>Account Number</th><th>Balance</th><th>Branch ID</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="table-container" id="customer-bank-account-container">
+            <h2>Customer Bank Account Table</h2>
+            <table id="customer-bank-account-table" class="data-table">
+                <thead><tr><th>Bank Account ID</th><th>Customer ID</th><th>Account Number</th><th>Balance</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <script src="./script/admin.js"></script>
+    </div>
+</body>
+</html>

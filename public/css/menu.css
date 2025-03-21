@@ -1,0 +1,349 @@
+/* Basic Reset */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+/* Navigation Bar Styling */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #ffcc00; /* Pac-Man inspired yellow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav_logo {
+    width: 50px;
+    height: auto;
+}
+
+.nav__links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav__item {
+    display: inline-block;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s;
+}
+
+.nav__link:hover {
+    color: #ff5733;
+}
+
+.nav__link--btn {
+    background-color: #ff5733;
+    color: #fff;
+    padding: 0.5rem 1.2rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav__link--btn:hover {
+    background-color: #e14a2b;
+}
+
+/* Hero Section */
+.hero {
+    background-color: #fff;
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.hero-title {
+    font-size: 3rem;
+    color: #ff5733;
+    margin-bottom: 1rem;
+}
+
+.section-text {
+    font-size: 1.25rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #ff5733;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #e14a2b;
+}
+
+.hero-banner {
+    margin-top: 2rem;
+}
+
+.hero-banner img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+/* Popular Section */
+.popular {
+    padding: 4rem 2rem;
+    background-color: #fffbf2;
+    text-align: center;
+}
+
+.section-subtile {
+    font-size: 1.25rem;
+    color: #ff5733;
+    margin-bottom: 0.5rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.grid-list {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none; /* Hides the bullet points */
+    padding: 0;       /* Removes any default padding */
+}
+
+.popular-card {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.popular-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-icon img {
+    width: 50px;
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    text-decoration: none;
+    font-size: 1.25rem;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.card-title:hover {
+    color: #ff5733;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav__links {
+        display: none; /* Hide nav links on smaller screens */
+    }
+
+    .navbar {
+        justify-content: space-between;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .grid-list {
+        flex-direction: column;
+    }
+}
+
+/* About Us Section Styling */
+.about-us {
+    background-color: #f7f7f7;
+    padding: 4rem 2rem;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.about-us h2 {
+    font-size: 2.5rem;
+    color: #e74c3c; /* A bold, pizza-inspired color */
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.about-us p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    color: #555;
+}
+
+.about-us .highlight {
+    color: #e74c3c; /* Matches the title color */
+    font-weight: bold;
+}
+
+.about-us .divider {
+    width: 80px;
+    height: 4px;
+    background-color: #e74c3c;
+    margin: 1rem auto;
+    border-radius: 2px;
+}
+
+.about-us .btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #e74c3c;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.about-us .btn:hover {
+    background-color: #c0392b;
+}
+
+/* Keyframes for floating animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+
+/* Footer Styles */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 4rem 2rem;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1 1 200px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.footer-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #ffd700;
+    text-transform: uppercase;
+}
+
+.footer-section p,
+.footer-links a {
+    font-size: 0.9rem;
+    color: #ddd;
+    line-height: 1.6;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #ffd700;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
+
+/* Social Icons */
+.social-icons a {
+    margin: 0 0.5rem;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+}
+
+.social-icons img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding: 1rem;
+    background: #222;
+    color: #bbb;
+    font-size: 0.8rem;
+    margin-top: 2rem;
+    border-top: 1px solid #444;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+#testButton {
+    padding: 10px 20px;
+    background-color: #ffcc00;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+#testButton:hover {
+    background-color: #ffaa00;
+}

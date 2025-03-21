@@ -1,0 +1,118 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #f8d74a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Main login page container styling */
+#loginPage {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+}
+
+/* Header styling with a bright color scheme */
+h1 {
+    font-size: 28px;
+    color: #e74c3c;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+/* Adding pizza slice graphic to the header */
+#loginPage::before {
+    content: "🍕";
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-weight: bold;
+    color: #e67e22;
+    margin-top: 1rem;
+    align-self: flex-start;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    border: 2px solid #e67e22;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #fdf5e6;
+    transition: border 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #e74c3c;
+    outline: none;
+}
+
+/* Button styling with a bold color scheme */
+#loginBtn {
+    background-color: #e74c3c;
+    color: #ffffff;
+    padding: 0.8rem 1.2rem;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+#loginBtn:hover {
+    background-color: #c0392b;
+}
+
+/* Decorative details */
+#loginBtn:active {
+    transform: scale(0.98);
+}
+
+#loginPage::after {
+    content: "🍕 Fast & Tasty!";
+    display: block;
+    margin-top: 1.5rem;
+    font-size: 14px;
+    color: #e67e22;
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+    #loginPage {
+        padding: 1.5rem;
+    }
+}

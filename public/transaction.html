@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction</title>
+    <link rel="stylesheet" href="./css/transaction.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Checkout</h1>
+        <h2>Your Order</h2>
+        <ul class="orderItems"></ul>
+        <div class="totalAmount">Total: <span class="total">0</span></div>
+
+        <h2>Select Payment Method</h2>
+        <div class="paymentMethod">
+            <label>
+                <input type="radio" name="paymentMethod" value="cash" required> Cash
+            </label>
+            <label>
+                <input type="radio" name="paymentMethod" value="card" required> Card
+            </label>
+        </div>
+
+        <form id="transactionForm">
+            <button type="submit">Confirm Payment</button>
+        </form>
+
+        <div class="message"></div>
+    </div>
+
+    <!-- Modal for Customer Registration -->
+    <div id="customerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Register New Customer</h2>
+            <form id="customerForm">
+                <label for="customerName">Name</label>
+                <input type="text" id="customerName" placeholder="Name" required>
+                <label for="customerEmail">Email</label>
+                <input type="email" id="customerEmail" placeholder="Email" required>
+                <button type="submit">Register</button>
+            </form>
+            <div class="message"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./script/transaction.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="p-4">
+    <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
+        <h1 class="text-2xl font-bold mb-6">Order Details</h1>
+        <p><strong>Order ID:</strong> <%= order.orderid %></p>
+        <p><strong>Customer Name:</strong> <%= order.customername %></p>
+        <p><strong>Customer Email:</strong> <%= order.customeremail %></p>
+        <p><strong>Branch Address:</strong> <%= order.branchaddress %></p>
+        <p><strong>Order Date:</strong> <%= order.ordertime %></p>
+        <p><strong>Items Ordered:</strong> <%= order.itemsordered %></p>
+        <p><strong>Total Amount:</strong> $<%= order.ordertotal ? order.ordertotal : 'N/A' %></p>
+        <p><strong>Payment Type:</strong> <%= order.paymenttype || 'N/A' %></p>
+        <p><strong>Transaction Amount:</strong> $<%= order.transactionamount || 'N/A' %></p>
+        <p><strong>Transaction Time:</strong> <%= order.transactiontime || 'N/A' %></p>
+    </div>
+</body>
+</html>
